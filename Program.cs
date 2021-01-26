@@ -25,8 +25,13 @@ namespace RhythmsGonnaGetYou
     }
     class RhythmsGonnaGetYouContext : DbContext
     {
-        public DbSet<Album> Albums { get; set; }
+        private DbSet<Album> albums;
+
+        public DbSet<Album> Albums { get => Albums1; set => Albums1 = value; }
         public DbSet<Band> Bands { get; set; }
+        internal DbSet<Album> Albums1 { get => albums; set => albums = value; }
+        internal DbSet<Album> Albums2 { get => albums; set => albums = value; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("server=localhost;database=Rhythm");
